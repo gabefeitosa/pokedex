@@ -25,7 +25,7 @@ public class PokemonDAO {
     }
 
     public PokemonTO save(PokemonTO pokemon){
-        String sql = "insert intp pokemon(nome, altura, peso, categoria," +
+        String sql = "insert into pokemon(nome, altura, peso, categoria," +
                 " data_da_captura) values(?, ?, ?, ?, ?)";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql))
         {

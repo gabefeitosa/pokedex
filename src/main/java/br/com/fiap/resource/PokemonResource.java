@@ -4,9 +4,7 @@ import br.com.fiap.bo.PokemonBO;
 import br.com.fiap.to.PokemonTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,17 @@ public class PokemonResource {
             return ResponseEntity.status(HttpStatus.OK).body(pokemons);
         else
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> save(@RequestBody PokemonTO pokemon){
+        try {
+            PokemonTO response = pokemonBO.save(pokemon);
+            return ResponseEntity.status(HttpStatus.CREATED).body(pokemon);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).
+                    body("Erro ao salvar pokemon");
+        }
+
     }
 }
