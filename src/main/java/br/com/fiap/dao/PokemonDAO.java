@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PokemonDAO {
-    public ArrayList<PokemonTO> listAll(){
+    public ArrayList<PokemonTO> findAll(){
         ArrayList<PokemonTO> pokemons = new ArrayList<>();
         String sql = "SELECT * FROM pokemon";
         try (PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql))

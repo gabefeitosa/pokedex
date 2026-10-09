@@ -12,14 +12,17 @@ public class PokemonBO {
     public ArrayList<PokemonTO> findAll(){
         pokemonDAO = new PokemonDAO();
 
-        return pokemonDAO.listAll();
+        return pokemonDAO.findAll();
     }
 
+    public PokemonTO findByCodigo(Long codigo){
+        pokemonDAO = new PokemonDAO();
+
+        return pokemonDAO.findByCodigo(codigo);
+    }
     public PokemonTO save(PokemonTO pokemon){
         pokemonDAO = new PokemonDAO();
 
-        if (pokemon.getDataDaCaptura().isAfter(LocalDate.now()))
-            return null;
         return pokemonDAO.save(pokemon);
     }
 }
